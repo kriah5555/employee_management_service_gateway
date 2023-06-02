@@ -72,22 +72,6 @@ class RefreshToken(models.Model):
         db_table = 'refresh_token'
         ordering = ['-id']
 
-TYPE_CHOICES = [
-    (0, 'Request'),
-    (1, 'Response')
-]
-
-METHOD_CHOICES = [
-    (0, 'GET'),
-    (1, 'POST'),
-    (2, 'PUT')
-]
-
-RESPONSE_STATUS_CODE_CHOICES = [
-    (200, '200'),
-    (400, '400')
-]
-
 class RequestLogs(models.Model):
     endpoint = models.CharField(max_length=100, null=True) # The url the user requested
     response_code = models.PositiveSmallIntegerField() # Response status code
