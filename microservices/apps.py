@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ApiGatewayServiceConfig(AppConfig):
+class MicroservicesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'api_gateway_service'
+    name = 'microservices'
