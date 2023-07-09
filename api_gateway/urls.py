@@ -20,7 +20,7 @@ from django.conf import settings
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', admin.site.urls),
     path('get-refresh-token/', views.GetRefreshToken.as_view(), name="get-refresh-token"),
     path('service/<str:service_name>/<str:path>', views.ServiceRequest.as_view()),
 ]
