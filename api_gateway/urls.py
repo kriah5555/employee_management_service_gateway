@@ -15,12 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from django.conf import settings
-from . import views
+from . import views as ApiGatewayViews
+from microservices import views as MicroserviceViews
 
 urlpatterns = [
-    path('', admin.site.urls),
-    path('get-refresh-token/', views.GetRefreshToken.as_view(), name="get-refresh-token"),
-    path('service/<str:service_name>/<str:path>', views.ServiceRequest.as_view()),
+    path('', ApiGatewayViews.home, name="home"),
+    path('admin/', admin.site.urls),
+    path('get-refresh-token', ApiGatewayViews.GetRefreshToken.as_view(), name="get-refresh-token"),
+    path('service/<str:service_name>/<str:path>', MicroserviceViews.ServiceRequest.as_view()),
 ]

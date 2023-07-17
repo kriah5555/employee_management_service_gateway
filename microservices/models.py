@@ -3,8 +3,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 import hashlib
 from datetime import timedelta, datetime
-from api_gateway.settings import REFRESH_TOKEN_LIFESPAN
 from users.models import User
+from api_gateway.constants import CLIENT_TYPE_CHOICES, REFRESH_TOKEN_LIFESPAN
 
 # Create your models here.
 
@@ -20,6 +20,7 @@ class Microservice(models.Model):
 class Client(models.Model):
     name = models.CharField(max_length=255, null=True,blank=True)
     microservices_access = models.ManyToManyField('Microservice', blank=True, verbose_name = 'Microservices access')
+    client_type = models.SmallIntegerField(choices = CLIENT_TYPE_CHOICES, null = True, blank = True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -57,6 +58,7 @@ class RefreshToken(models.Model):
     api_key = models.ForeignKey(ApiKey, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     expiry = models.DateTimeField()
+    status = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         self.expiry = datetime.now() + timedelta(seconds=REFRESH_TOKEN_LIFESPAN)
@@ -88,3 +90,12 @@ class RequestLogs(models.Model):
     class Meta:
         db_table = 'request_logs'
         ordering = ['-id']
+
+# class UrlRouting(models.Model):
+#     name = models.CharField(max_length=255)
+#     base_url = models.CharField()
+#     created = models.DateTimeField(auto_now_add=True)
+#     updated = models.DateTimeField(auto_now=True)
+
+#     def __str__(self):
+#         return self.name
