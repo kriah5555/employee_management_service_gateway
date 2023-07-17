@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS identity_manager_db;
+CREATE DATABASE identity_manager_db;
 
-CREATE DATABASE IF NOT EXISTS masterdata_db;
+CREATE DATABASE masterdata_db;
 
-CREATE DATABASE IF NOT EXISTS service_gateway_db;
+CREATE DATABASE service_gateway_db;
