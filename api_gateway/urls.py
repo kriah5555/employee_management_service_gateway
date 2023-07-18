@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('get-refresh-token', ApiGatewayViews.GetRefreshToken.as_view(), name="get-refresh-token"),
     path('service/<str:service_name>/<str:path>', MicroserviceViews.ServiceRequest.as_view()),
+    path('service/<str:service_name>/<str:path>/<str:id>', MicroserviceViews.ServiceRequest.as_view()),
 ]
