@@ -10,13 +10,15 @@ from .permissions import AccessToken
 # Create your views here.
 
 class ServiceRequest(APIView):
-    permission_classes = [AccessToken]
+    # permission_classes = [AccessToken]
     renderer_classes   = (JSONRenderer, )
 
-    def dispatch(self, request, service_name, path):
+    def dispatch(self, request, service_name, path, id=None):
         service_obj = get_object_or_404(Microservice, name=service_name)
         service_base_url = service_obj.base_url
         url = service_base_url + '/' + path
+        if id is not None:
+            url = url + '/' + id
         headers_to_forward = ['Content-Type', 'Authorization']
         response = requests.request(
             method=request.method,
