@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['api.test.indii-new.infanion.com', 'api-gateway.indii2.local', 'localhost', '172.100.0.1']
 
-CSRF_TRUSTED_ORIGINS = ['http://api.test.indii-new.infanion.com', 'http://api-gateway.indii2.local', 'http://localhost', 'http://172.100.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://api.test.indii-new.infanion.com', 'http://api-gateway.indii2.local', 'http://localhost', 'http://172.100.0.1']
 
 
 # Application definition
