@@ -9,8 +9,6 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
-
 # Configure non-root user.
 ARG PUID=1000
 ENV PUID ${PUID}
@@ -23,4 +21,9 @@ RUN chown -R www-data:www-data /app
 
 USER www-data
 
-CMD python manage.py runserver 0.0.0.0:8000
+# Expose the Gunicorn port
+EXPOSE 8000
+
+COPY ./docker/entrypoint.sh /
+
+ENTRYPOINT ["sh", "/entrypoint.sh"]

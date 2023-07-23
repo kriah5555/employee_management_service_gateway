@@ -38,7 +38,7 @@ db_backups
 #static/css/main\\.[^\\.]+\\.css
 static/css/
 static/js/
-# static/images/
+static/
 frontend-ui/package-lock.json
 
 .env
