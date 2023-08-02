@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from django.conf import settings
 from . import views as ApiGatewayViews
 from microservices import views as MicroserviceViews
@@ -26,4 +26,6 @@ urlpatterns = [
     path('get-refresh-token', ApiGatewayViews.GetRefreshToken.as_view(), name="get-refresh-token"),
     path('service/<str:service_name>/<str:path>', MicroserviceViews.ServiceRequest.as_view()),
     path('service/<str:service_name>/<str:path>/<str:id>', MicroserviceViews.ServiceRequest.as_view()),
+    path('service/<str:service_name>/<str:path>/<str:id>/<str:action>', MicroserviceViews.ServiceRequest.as_view()),
+    # re_path(r'^api/(?P<path>.*)/', MicroserviceViews.Test.as_view())
 ]

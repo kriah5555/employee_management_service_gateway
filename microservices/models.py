@@ -18,7 +18,7 @@ class Microservice(models.Model):
         return self.name
 
 class Client(models.Model):
-    name = models.CharField(max_length=255, null=True,blank=True)
+    name = models.CharField(max_length=255, blank=True)
     microservices_access = models.ManyToManyField('Microservice', blank=True, verbose_name = 'Microservices access')
     client_type = models.SmallIntegerField(choices = CLIENT_TYPE_CHOICES, null = True, blank = True)
     created = models.DateTimeField(auto_now_add=True)
@@ -75,10 +75,10 @@ class RefreshToken(models.Model):
         ordering = ['-id']
 
 class RequestLogs(models.Model):
-    endpoint = models.CharField(max_length=100, null=True) # The url the user requested
+    endpoint = models.CharField(max_length=100, blank=True) # The url the user requested
     response_code = models.PositiveSmallIntegerField() # Response status code
-    method = models.CharField(max_length=10, null=True)  # Request method
-    remote_address = models.CharField(max_length=20, null=True) # IP address of user
+    method = models.CharField(max_length=10, blank=True)  # Request method
+    remote_address = models.CharField(max_length=20, blank=True) # IP address of user
     exec_time = models.IntegerField(null=True) # Time taken to create the response
     date = models.DateTimeField(auto_now=True) # Date and time of request
     body_response = models.TextField() # Response data
@@ -93,6 +93,7 @@ class RequestLogs(models.Model):
 
 # class UrlRouting(models.Model):
 #     name = models.CharField(max_length=255)
+#     microservice = models.ForeignKey(Microservice, on_delete=models.CASCADE)
 #     base_url = models.CharField()
 #     created = models.DateTimeField(auto_now_add=True)
 #     updated = models.DateTimeField(auto_now=True)
