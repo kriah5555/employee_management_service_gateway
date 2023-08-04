@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-7jkece$8@^wu8y)f-atp3imbfp0*y(sbpqs7+by6l()nlzz7s_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['api.test.indii-new.infanion.com', 'api-gateway.indii2.local', 'localhost', '172.100.0.1']
+ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://api.test.indii-new.infanion.com', 'http://api-gateway.indii2.local', 'http://localhost', 'http://172.100.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://api.test.indii-new.infanion.com', 'http://api-gateway.indii2.local', 'http://localhost', 'http://172.19.0.12', 'http://dev.api.indii-2.0.infanion.com', 'https://dev.api.indii-2.0.infanion.com']
 
 
 # Application definition
