@@ -28,8 +28,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://api.test.indii-new.infanion.com', 'http://api-gateway.indii2.local', 'http://localhost', 'http://172.19.0.12', 'http://dev.api.indii-2.0.infanion.com', 'https://dev.api.indii-2.0.infanion.com']
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://api.test.indii-new.infanion.com',
+    'http://api-gateway.indii2.local',
+    'http://localhost',
+    'http://172.19.0.12',
+    'http://dev.api.indii-2.0.infanion.com',
+    'https://dev.api.indii-2.0.infanion.com',
+    'http://172.100.0.1'
+]
 
 # Application definition
 
@@ -180,3 +187,9 @@ LOGGING = {
         },
     },
 }
+
+SERVICE_GATEWAY_URL = os.environ.get('SERVICE_GATEWAY_URL', 'http://127.0.0.1:8000')
+
+OAUTH_CLIENT_ID = os.environ.get('OAUTH_CLIENT_ID', 9)
+
+OAUTH_CLIENT_SECRET = os.environ.get('OAUTH_CLIENT_SECRET', 'HIkrymXf9orQvXRynNvszJmNtf2hy0xZvr9AnpNb')

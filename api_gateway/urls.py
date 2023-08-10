@@ -27,5 +27,5 @@ urlpatterns = [
     path('service/<str:service_name>/<str:path>', MicroserviceViews.ServiceRequest.as_view()),
     path('service/<str:service_name>/<str:path>/<str:id>', MicroserviceViews.ServiceRequest.as_view()),
     path('service/<str:service_name>/<str:path>/<str:id>/<str:action>', MicroserviceViews.ServiceRequest.as_view()),
-    # re_path(r'^api/(?P<path>.*)/', MicroserviceViews.Test.as_view())
+    path('service/login', MicroserviceViews.Login.as_view()),
 ]

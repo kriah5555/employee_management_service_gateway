@@ -10,7 +10,7 @@ from api_gateway.constants import CLIENT_TYPE_CHOICES, REFRESH_TOKEN_LIFESPAN
 
 class Microservice(models.Model):
     name = models.CharField(max_length=255)
-    base_url = models.CharField()
+    base_url = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -94,7 +94,7 @@ class RequestLogs(models.Model):
 # class UrlRouting(models.Model):
 #     name = models.CharField(max_length=255)
 #     microservice = models.ForeignKey(Microservice, on_delete=models.CASCADE)
-#     base_url = models.CharField()
+#     base_url = models.CharField(max_length=255)
 #     created = models.DateTimeField(auto_now_add=True)
 #     updated = models.DateTimeField(auto_now=True)
 
