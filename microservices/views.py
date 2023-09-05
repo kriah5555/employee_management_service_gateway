@@ -10,17 +10,18 @@ from django.conf import settings
 
 # Create your views here.
 
+
 class ServiceRequest(APIView):
-    permission_classes = [AccessToken]
-    renderer_classes   = (JSONRenderer, )
+    # permission_classes = [AccessToken]
+    renderer_classes = (JSONRenderer,)
 
     def api_request(self, request, service_name, path, id=None, action=None):
         service_base_url = get_microservice_url(service_name)
-        url = service_base_url + '/' + path
+        url = service_base_url + "/" + path
         if id is not None:
-            url = url + '/' + id
+            url = url + "/" + id
         if action is not None:
-            url = url + '/' + action
+            url = url + "/" + action
         response = requests.request(
             method=request.method,
             url=url,
@@ -32,7 +33,7 @@ class ServiceRequest(APIView):
         return HttpResponse(
             content=response.content,
             status=response.status_code,
-            headers = headers_to_forward(response.headers.items())
+            headers=headers_to_forward(response.headers.items()),
         )
 
     def get(self, request, service_name, path, id=None, action=None):
@@ -49,16 +50,16 @@ class ServiceRequest(APIView):
 
 
 class Login(APIView):
-    renderer_classes = (JSONRenderer, )
+    renderer_classes = (JSONRenderer,)
 
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
-            service_base_url = get_microservice_url('identity-manager')
-            url = service_base_url + '/login'
+            service_base_url = get_microservice_url("identity-manager")
+            url = service_base_url + "/login"
             payload = {
-                "username": serializer.validated_data['username'],
-                "password": serializer.validated_data['password'],
+                "username": serializer.validated_data["username"],
+                "password": serializer.validated_data["password"],
             }
             response = requests.post(url, data=payload)
             return HttpResponse(

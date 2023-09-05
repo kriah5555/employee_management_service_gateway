@@ -16,6 +16,9 @@ class Microservice(models.Model):
 
     def __str__(self):
         return self.name
+    class Meta:
+        db_table = 'microservices'
+        ordering = ['-id']
 
 class Client(models.Model):
     name = models.CharField(max_length=255, blank=True)
@@ -27,7 +30,7 @@ class Client(models.Model):
     def __str__(self):
         return self.name
     class Meta:
-        db_table = 'client'
+        db_table = 'clients'
         ordering = ['-id']
 
 class ApiKey(models.Model):
@@ -40,7 +43,7 @@ class ApiKey(models.Model):
     def __str__(self):
         return "{0}:{1}".format(self.client, self.key)
     class Meta:
-        db_table = 'api_key'
+        db_table = 'api_keys'
         ordering = ['-id']
 
 @receiver(post_save, sender=Client)
@@ -71,7 +74,7 @@ class RefreshToken(models.Model):
         return "{0}:{1}".format(self.api_key.client.name, self.token)
 
     class Meta:
-        db_table = 'refresh_token'
+        db_table = 'refresh_tokens'
         ordering = ['-id']
 
 class RequestLogs(models.Model):
