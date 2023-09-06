@@ -21,94 +21,90 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7jkece$8@^wu8y)f-atp3imbfp0*y(sbpqs7+by6l()nlzz7s_'
+SECRET_KEY = "django-insecure-7jkece$8@^wu8y)f-atp3imbfp0*y(sbpqs7+by6l()nlzz7s_"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://api.test.indii-new.infanion.com',
-    'http://api-gateway.indii2.local',
-    'http://localhost',
-    'http://172.19.0.12',
-    'http://dev.api.indii-2.0.infanion.com',
-    'https://dev.api.indii-2.0.infanion.com',
-    'http://172.100.0.1'
+    "https://api.test.indii-new.infanion.com",
+    "http://api-gateway.indii2.local",
+    "http://localhost",
+    "http://172.19.0.12",
+    "http://dev.api.indii-2.0.infanion.com",
+    "https://dev.api.indii-2.0.infanion.com",
+    "http://172.100.0.1",
+    "http://indii2.local",
 ]
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'users',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "users",
     # 'oauth2_provider',
     # 'corsheaders',
-    'rest_framework',
-    'microservices',
+    "rest_framework",
+    "microservices",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
     # 'oauth2_provider.middleware.OAuth2TokenMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'api_gateway.middleware.LoggerMiddleware',
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "api_gateway.middleware.LoggerMiddleware",
+    "api_gateway.middleware.TokenValidationMiddleware",
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-ROOT_URLCONF = 'api_gateway.urls'
+ROOT_URLCONF = "api_gateway.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'api_gateway.wsgi.application'
+WSGI_APPLICATION = "api_gateway.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "mydatabase",
+        "ENGINE": os.environ.get("DB_ENGINE"),
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': os.environ.get('DB_ENGINE'),
-#         'NAME': os.environ.get('DB_NAME'),
-#         'USER': os.environ.get('DB_USER'),
-#         'PASSWORD': os.environ.get('DB_PASSWORD'),
-#         'HOST': os.environ.get('DB_HOST'),
-#         'PORT': os.environ.get('DB_PORT'),
-#     }
-# }
 
 
 # Password validation
@@ -116,16 +112,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -133,9 +129,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'Asia/Kolkata'
+TIME_ZONE = "Asia/Kolkata"
 
 USE_I18N = True
 
@@ -145,23 +141,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL='users.User'
+AUTH_USER_MODEL = "users.User"
 
-LOGIN_URL='/admin/login/'
+LOGIN_URL = "/admin/login/"
 
 AUTHENTICATION_BACKENDS = [
     # 'oauth2_provider.backends.OAuth2Backend',
     # Uncomment following if you want to access the admin
-    'django.contrib.auth.backends.ModelBackend',
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
 # OAUTH2_PROVIDER = {
@@ -175,27 +171,29 @@ AUTHENTICATION_BACKENDS = [
 # }
 
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
         },
     },
-    'loggers': {
-        'django.request': {
-            'handlers': ['console'],
-            'level': 'INFO',
+    "loggers": {
+        "django.request": {
+            "handlers": ["console"],
+            "level": "INFO",
         },
-        'api_gateway': {
-            'handlers': ['console'],
-            'level': 'INFO',
+        "api_gateway": {
+            "handlers": ["console"],
+            "level": "INFO",
         },
     },
 }
 
-SERVICE_GATEWAY_URL = os.environ.get('SERVICE_GATEWAY_URL', 'http://127.0.0.1:8000')
+SERVICE_GATEWAY_URL = os.environ.get("SERVICE_GATEWAY_URL", "http://127.0.0.1:8000")
 
-OAUTH_CLIENT_ID = os.environ.get('OAUTH_CLIENT_ID', 9)
+OAUTH_CLIENT_ID = os.environ.get("OAUTH_CLIENT_ID", 9)
 
-OAUTH_CLIENT_SECRET = os.environ.get('OAUTH_CLIENT_SECRET', 'HIkrymXf9orQvXRynNvszJmNtf2hy0xZvr9AnpNb')
+OAUTH_CLIENT_SECRET = os.environ.get(
+    "OAUTH_CLIENT_SECRET", "HIkrymXf9orQvXRynNvszJmNtf2hy0xZvr9AnpNb"
+)
