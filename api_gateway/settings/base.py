@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "users",
-    # 'oauth2_provider',
+    "oauth2_provider",
     # 'corsheaders',
     "rest_framework",
     "microservices",

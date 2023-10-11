@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from django.conf import settings
 from . import views as ApiGatewayViews
 from microservices import views as MicroserviceViews
@@ -40,5 +40,6 @@ urlpatterns = [
         "service/<str:service_name>/<str:path>/<str:id>/<str:action>",
         MicroserviceViews.ServiceRequest.as_view(),
     ),
+    path("o/", include("oauth2_provider.urls", namespace="oauth2_provider")),
     # path("service/login", MicroserviceViews.Login.as_view()),
 ]
