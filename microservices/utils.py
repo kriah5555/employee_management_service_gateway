@@ -8,5 +8,5 @@ def get_microservice_url(service_name):
 
 
 def headers_to_forward(headers):
-    headers_to_forward = ["Content-Type", "Authorization", "Uid"]
+    headers_to_forward = ["Content-Type", "Authorization", "Uid", "Company-Id"]
     return {key: value for key, value in headers if key in headers_to_forward}
