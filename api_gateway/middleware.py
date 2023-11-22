@@ -60,6 +60,8 @@ class TokenValidationMiddleware:
         self.exclude_paths = [
             "/service/identity-manager/login",
             "/service/identity-manager/login/",
+            "/service/identity-manager/web-login",
+            "/service/identity-manager/web-login/",
             "/service/identity-manager/oauth/token",
             "/service/identity-manager/generate-access-token",
         ]

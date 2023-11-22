@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "users",
     "oauth2_provider",
-    # 'corsheaders',
+    "corsheaders",
     "rest_framework",
     "microservices",
 ]
@@ -70,6 +70,16 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_HEADERS = [
+    "Accept",
+    "Accept-Language",
+    "Authorization",
+    "Content-Type",
+    "X-Requested-With",
+    "Company-Id"
+    # Add more headers as needed
+]
 
 ROOT_URLCONF = "api_gateway.urls"
 
