@@ -64,6 +64,8 @@ class TokenValidationMiddleware:
             "/service/identity-manager/web-login/",
             "/service/identity-manager/oauth/token",
             "/service/identity-manager/generate-access-token",
+            "/service/identity-manager/logout",
+            "/service/identity-manager/logout/",
         ]
         self.access_token = None
         self.uid = None
