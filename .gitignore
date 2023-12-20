@@ -8,7 +8,6 @@ media/
 configuration.py
 migrations/
 .vscode/
-db_backups
 
 # misc
 .DS_Store
@@ -20,26 +19,12 @@ db_backups
 # media files
 # frontend/public/static
 
-
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 
 /.pnp
 .pnp.js
 
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-#static/js/main\\.[^\\.]+\\.js
-#static/css/main\\.[^\\.]+\\.css
-static/css/
-static/js/
 static/
-frontend-ui/package-lock.json
 
 .env
 
