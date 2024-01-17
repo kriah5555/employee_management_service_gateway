@@ -66,6 +66,8 @@ class TokenValidationMiddleware:
             "/service/identity-manager/generate-access-token",
             "/service/identity-manager/logout",
             "/service/identity-manager/logout/",
+            "/service/masterdata/translate/",
+            "/service/masterdata/translate",
         ]
         self.access_token = None
         self.uid = None
